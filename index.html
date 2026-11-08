@@ -1,22 +1,102 @@
-<header class="topo">
-  <a href="#inicio" class="logo">Café Byte</a>
-  <nav id="menu" class=menu">
-    <a href="#sobre">Sobre</a>
-    <a href="#Cardapio">Cardápio</a>
-    <a href="#Contato">Contato</a>
-  </nav>
-</header>
-<main>
-  <section id="inicio" class="destaque">
-    <p id="Saudacao" class="Saudacao">Olá! Que bom ter você por aqui.</p>
-    <h1>Café quentinho, código fresquinho.</h1>
-    <p>Café especiais, bolos caseiros e um cantinho com wifi para estudar. </p>
-    <a href="#cardapio" class="botao">Ver cardapio</a>
-    <button id="botao">Clique aqui</button>
-  </section>
-<main> 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>email@exemplo.com</p>
-  </section>
-</main> 
+<!DOCTYPE html>
+<html lang="pt-BR"
+<head>
+  <meta charset="UTF-8"
+  <meta name="viewport"content="width=device-width, initial-scale=1.0"
+  <title>Café Byte</title>
+</head>
+<body> 
+  <!-- Café Byte: projeto do curso web do Zero -->
+  <header class="topo">
+    <a href="#inicio" class="logo">Café Byte</a>
+    <nav id="menu" class=menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#Cardapio">Cardápio</a>
+      <a href="#Contato">Contato</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="inicio" class="destaque">
+      <p id="Saudacao" class="Saudacao">Olá! Que bom ter você por aqui.</p>
+      <h1>Café quentinho, código fresquinho.</h1>
+      <p>Café especiais, bolos caseiros e um cantinho com wifi para estudar. </p>
+      <a href="#cardapio" class="botao">Ver cardapio</a>
+      <button id="botao">Clique aqui</button>
+    </section>
+    
+    <section id="sobre" class="secao">
+      <h2>Sobre nós</h2>
+      <div class="duas-colunas">
+        <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/500px-A_small_cup_of_coffee.JPG" alt="Xícara de café com pires e colher" width="500">
+        <div>
+          <p>O<strong>Café Byte</strong> nasceu da vontade de juntar duas paixões: um bom café e boas ideias. Aqui você encontra grãos selecionados, receitas caseiras e um ambiente tranquilo para estudar, trabalhar ou conversar. </p>
+          <ul>
+            <li>Grãos de pequenos produtores</li>
+            <li>Bolos feitos todo o dia de manhã</li>
+            <li>Wi-Fi grátis e tomadas nas mesas</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Horário de Funcionamento</h3>
+      <table class="horarios">
+        <tr>
+          <th>Dia</th>
+          <th>Horário</th>
+        </tr>
+        <tr>
+          <td>Segunda a Sexta</td>
+          <td>7h às 20h</td>
+        </tr>
+        <tr>
+          <td>Sábado</td>
+          <td>8h às 18h</td>
+        </tr>
+        <tr>
+          <td>Domingo</td>
+          <td>Fechado</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="cardapio" class="secao">
+      <h2>Cardápio</h2>
+      <p>Alguns dos nossos querinhos:</p>
+      <div class="cards">
+        <article class="cards">
+          <span class="emoji">☕</span>
+          <h3>Café Expresso</h3>
+          <p>Curto, encopado e cheiroso.<p>
+            <p class="preco">R$ 6,50</p>
+        </article>
+        <article class="cards">
+          <span class="emoji">🥛</span>
+          <h3>Cappuccino</h3>
+          <p>Café, leite vaporizado e canela.<p>
+          <p class="preco">R$ 9,90</p>
+        </article>
+        <article class="cards">
+          <span class="emoji">🥐</span>
+          <h3>Pão de Queijo</h3>
+          <p>Delicioso e quentinho, perfeito para o café da manhã.<p>
+          <p class="preco">R$ 5,00</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contato" class="secao">
+      <h2>Contato</h2>
+      <p>Rua das Flores, 123, Centro</p>
+      <p> <a href="tel:+5511999999999">(11) 99999-9999</a></p>
+      <p><a href="mailto:contato@cafebyte.com">contato@cafebyte.com</a></p>
+      <p><a href="https://www.instagram.com/cafebyte" target="_blank">Siga a gente no Instagram</a></p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>&copy; 2026 Café Byte - Feito por Isadora Cazabona Vieira no Curso web do zero</p>
+    <a href="#inicio">Voltar ao topo &uarr;</a>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
