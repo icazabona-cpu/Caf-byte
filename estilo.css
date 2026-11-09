@@ -1,4 +1,5 @@
 /* ==== Café Byte: estilos ==== */
+
 /* Fonte Poppins, do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -12,6 +13,7 @@
     --cor-destaque: #d9822b;
     --cor-suave: #fle3d3;
 }
+
 /* Todos os elementos: medidas mais previsíveis */
 * {
     box-sizing: border-box;
@@ -198,15 +200,239 @@ img {
     .topo {
         flex-wrap:wrap;
     }
+
     .destaque h1 {
         font-size: 2rem;
     }
+
     .duas-colunas {
         grid-template-columns: 1fr;
     }
+
     .secao {
         margin: 16px;
         padding: 20px;
     }
 }
+ 
+/* ==== Saudação e aviso de aberto/fechado ==== */
+ .saudacao {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cor-destaque);
+    margin: 0;
+ }
+
+.status {
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 999px;
+}
+
+.aberto-agora {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.fechado-agora {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* ==== Modo escuro e menu do celular ==== */
+
+/* No modo escuro, só trocamos os valores das variáveis */
+body.escuro {
+    --cor-fundo: #1c1512;
+    --cor-texto: #f3e9e2;
+    --cor-cartao: #2a201b;
+    --cor-titulo: #f2b56b;
+    --cor-suave: #3b2f27;
+}
+
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.botao-tema,
+.botao-menu {
+    background: none;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+/* O botão fica escondido no computador */
+.botao-menu {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .botao-menu {
+        display: block;
+    }
+    
+    .botao-tema {
+        margin-left: auto;
+    }
+
+    /* No celular, o menu fica escondido até clicar no botão */
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        order: 3;
+    }
+
+    .menu.mostrar {
+        display: flex;
+    }
+}
+ 
+//* ==== Busca e filtros do cardápio ==== */ 
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.busca {
+    flex: 1 1 220px;
+    padding: 10px 16px;
+    border: 2px solid var(--cor-suave);
+    border-radius: 999px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.filtros {
+    padding: 8px 16px;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 999px;
+    background: none;
+    color: var(--cor-texto);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.filtro.ativo{
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+}
+
+/* ==== Meu pedido ==== */
+.tens-pedido {
+    list-style: none;
+    padding: 0;
+}
+
+.itens-pedido li {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cor-suave);
+}
+
+.itens-pedido li span:first-child {
+    flex: 1;
+}
+
+.remover{
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 50%;
+    background: none;
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.total {
+    font-size: 1.3rem;
+    text-align: right;
+}
+
+/* Formulário de entrega */
+.form {
+    display: grid;
+    gap: 6px;
+    max-width: 480px;
+}
+
+.form input{
+    padding: 10px 14px;
+    border: 2px solid var(--cor-suave);
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+}
+
+.form .botao {
+    margin-top: 12px;
+    justify-self: start;
+}
+
+.mensagem {
+    font-weight: 600;
+    color: var(--cor-destaque);
+}
+
+/* ==== Clima e mapa ==== */
+.clima {
+    margin: 0 0 20px;
+    padding: 8px 20px;
+    background-color: var(--cor-cartao);
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.mapa {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 12px;
+}
+
+/* ==== Acabamento ==== */
+
+/* Rolagem suave ao clicar nos links do menus */
+html{
+    scroll-behavior: smooth;
+}
+
+/* Ao pular para uma seção, deixa espaço para o cabeçalho fixo */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* Contorno bem visível para quem navega pelo teclado (tab) */
+a:focus-visible,
+button:focus-visible
+input: focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+/* Cor do texto quando selecionado com o mouse */
+::selection{
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+}
+
+
 

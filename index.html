@@ -4,6 +4,10 @@
   <meta charset="UTF-8"
   <meta name="viewport"content="width=device-width, initial-scale=1.0"
   <title>Café Byte</title>
+  <meta nome="description" content="Café Byte: cafeteria do bairro com cafés especiais, bolos caseiros, pedidos online e entrega.">
+  <link rel="icon" href="data:image/svg+xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body> 
   <!-- Café Byte: projeto do curso web do Zero -->
@@ -12,8 +16,11 @@
     <nav id="menu" class=menu">
       <a href="#sobre">Sobre</a>
       <a href="#Cardapio">Cardápio</a>
+      <a href="#pedido">Pedido</a>
       <a href="#Contato">Contato</a>
     </nav>
+    <button id="botao-tema" class="botao-tema" aria-label="Mudar tema">🌓</button>
+    <button id="botao-menu" class="botao-menu" aria-label="Abrir menu">☰</button>
   </header>
   
   <main>
@@ -21,6 +28,8 @@
       <p id="Saudacao" class="Saudacao">Olá! Que bom ter você por aqui.</p>
       <h1>Café quentinho, código fresquinho.</h1>
       <p>Café especiais, bolos caseiros e um cantinho com wifi para estudar. </p>
+      <p id="status" class="status"></p>
+      <div id="clima" class="clima"> Consultando o clima...</div>
       <a href="#cardapio" class="botao">Ver cardapio</a>
       <button id="botao">Clique aqui</button>
     </section>
@@ -61,27 +70,34 @@
 
     <section id="cardapio" class="secao">
       <h2>Cardápio</h2>
-      <p>Alguns dos nossos querinhos:</p>
-      <div class="cards">
-        <article class="cards">
-          <span class="emoji">☕</span>
-          <h3>Café Expresso</h3>
-          <p>Curto, encopado e cheiroso.<p>
-            <p class="preco">R$ 6,50</p>
-        </article>
-        <article class="cards">
-          <span class="emoji">🥛</span>
-          <h3>Cappuccino</h3>
-          <p>Café, leite vaporizado e canela.<p>
-          <p class="preco">R$ 9,90</p>
-        </article>
-        <article class="cards">
-          <span class="emoji">🥐</span>
-          <h3>Pão de Queijo</h3>
-          <p>Delicioso e quentinho, perfeito para o café da manhã.<p>
-          <p class="preco">R$ 5,00</p>
-        </article>
+      <p>Escolha uma categoria ou procure pelo nome: </p>
+      <div class="filtros">
+        <input type="search" id="busca" class="busca" placeholder=" Buscar no cardápio...">
+        <button class="filtro ativo" data-categoria="todos">Todos</button>
+        <button class="filtro" data-categoria="bebidas">Bebidas</button>
+        <button class="filtro" data-categoria="doce">Doces</button>
+        <button class="filtro" data-categoria="salgado">Salgados</button>
       </div>
+      <div id="lista-produtos" class="cards"></div>
+    </section>
+
+    <section id="pedido" class="secao">
+      <h2>Meu pedido</h2>
+      <ul id="itens-pedido" class="itens-pedido"></ul>
+      <p class="total">Total:<strong id="total">R$ 0,00</strong></p>
+
+      <h3>Entrega</h3>
+      <form id="form-entrega" class"form">
+        <label for="cep">CEP</label>
+        <input id="cep" placeholder="00000-000" maxlength="9" required>
+        <p id="msg-cep" class="mensagem"></p>
+        <label for="endereco">Endereço</label>
+        <input id="endereco" placeholder="Rua, bairro e cidade" required>
+        <label for="numero">Número</label>
+        <input id="numero" placeholder="Ex.: 123" required>
+        <button type="submit" class="botao">Finalizar pedido</button>
+      </form>
+      <p id="msg=pedido" class="mensagem"></p>
     </section>
 
     <section id="contato" class="secao">
@@ -90,11 +106,12 @@
       <p> <a href="tel:+5511999999999">(11) 99999-9999</a></p>
       <p><a href="mailto:contato@cafebyte.com">contato@cafebyte.com</a></p>
       <p><a href="https://www.instagram.com/cafebyte" target="_blank">Siga a gente no Instagram</a></p>
+      <iframe class="mapa" title="Mapa do Café Byte" src="https//www.openstreetmap.org/export/embed.html?bbox=-46.640,-23.556,-46.626,-23.545&layer=mapnik&marker=-23.5505,-46.6333"></iframe>
     </section>
   </main>
 
   <footer class="rodape">
-    <p>&copy; 2026 Café Byte - Feito por Isadora Cazabona Vieira no Curso web do zero</p>
+    <p>&copy; <span id="ano">2026</span> Café Byte - Feito por SEU NOME no curso web do Zero</p>
     <a href="#inicio">Voltar ao topo &uarr;</a>
   </footer>
   <script src="js/script.js"></script>
