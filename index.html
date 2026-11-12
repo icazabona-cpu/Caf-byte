@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR"
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"
-  <meta name="viewport"content="width=device-width, initial-scale=1.0"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Café Byte</title>
-  <meta nome="description" content="Café Byte: cafeteria do bairro com cafés especiais, bolos caseiros, pedidos online e entrega.">
-  <link rel="icon" href="data:image/svg+xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+  <meta name="description" content="Café Byte: cafeteria do bairro com cafés especiais, bolos caseiros, pedidos online e entrega.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 
-  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body> 
   <!-- Café Byte: projeto do curso web do Zero -->
   <header class="topo">
     <a href="#inicio" class="logo">Café Byte</a>
-    <nav id="menu" class=menu">
+    <nav id="menu" class="menu">
       <a href="#sobre">Sobre</a>
-      <a href="#Cardapio">Cardápio</a>
+      <a href="#cardapio">Cardápio</a>
       <a href="#pedido">Pedido</a>
-      <a href="#Contato">Contato</a>
+      <a href="#contato">Contato</a>
     </nav>
     <button id="botao-tema" class="botao-tema" aria-label="Mudar tema">🌓</button>
     <button id="botao-menu" class="botao-menu" aria-label="Abrir menu">☰</button>
@@ -25,21 +25,20 @@
   
   <main>
     <section id="inicio" class="destaque">
-      <p id="Saudacao" class="Saudacao">Olá! Que bom ter você por aqui.</p>
+      <p id="saudacao" class="saudacao">Olá! Que bom ter você por aqui.</p>
       <h1>Café quentinho, código fresquinho.</h1>
       <p>Café especiais, bolos caseiros e um cantinho com wifi para estudar. </p>
       <p id="status" class="status"></p>
       <div id="clima" class="clima"> Consultando o clima...</div>
       <a href="#cardapio" class="botao">Ver cardapio</a>
-      <button id="botao">Clique aqui</button>
     </section>
     
     <section id="sobre" class="secao">
       <h2>Sobre nós</h2>
       <div class="duas-colunas">
-        <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/500px-A_small_cup_of_coffee.JPG" alt="Xícara de café com pires e colher" width="500">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/500px-A_small_cup_of_coffee.JPG" alt="Xícara de café com pires e colher" width="500">
         <div>
-          <p>O<strong>Café Byte</strong> nasceu da vontade de juntar duas paixões: um bom café e boas ideias. Aqui você encontra grãos selecionados, receitas caseiras e um ambiente tranquilo para estudar, trabalhar ou conversar. </p>
+          <p>O <strong>Café Byte</strong> nasceu da vontade de juntar duas paixões: um bom café e boas ideias. Aqui você encontra grãos selecionados, receitas caseiras e um ambiente tranquilo para estudar, trabalhar ou conversar. </p>
           <ul>
             <li>Grãos de pequenos produtores</li>
             <li>Bolos feitos todo o dia de manhã</li>
@@ -74,7 +73,7 @@
       <div class="filtros">
         <input type="search" id="busca" class="busca" placeholder=" Buscar no cardápio...">
         <button class="filtro ativo" data-categoria="todos">Todos</button>
-        <button class="filtro" data-categoria="bebidas">Bebidas</button>
+        <button class="filtro" data-categoria="bebida">Bebidas</button>
         <button class="filtro" data-categoria="doce">Doces</button>
         <button class="filtro" data-categoria="salgado">Salgados</button>
       </div>
@@ -87,7 +86,7 @@
       <p class="total">Total:<strong id="total">R$ 0,00</strong></p>
 
       <h3>Entrega</h3>
-      <form id="form-entrega" class"form">
+      <form id="form-entrega" class="form">
         <label for="cep">CEP</label>
         <input id="cep" placeholder="00000-000" maxlength="9" required>
         <p id="msg-cep" class="mensagem"></p>
@@ -97,7 +96,7 @@
         <input id="numero" placeholder="Ex.: 123" required>
         <button type="submit" class="botao">Finalizar pedido</button>
       </form>
-      <p id="msg=pedido" class="mensagem"></p>
+      <p id="msg-pedido" class="mensagem"></p>
     </section>
 
     <section id="contato" class="secao">
@@ -106,12 +105,12 @@
       <p> <a href="tel:+5511999999999">(11) 99999-9999</a></p>
       <p><a href="mailto:contato@cafebyte.com">contato@cafebyte.com</a></p>
       <p><a href="https://www.instagram.com/cafebyte" target="_blank">Siga a gente no Instagram</a></p>
-      <iframe class="mapa" title="Mapa do Café Byte" src="https//www.openstreetmap.org/export/embed.html?bbox=-46.640,-23.556,-46.626,-23.545&layer=mapnik&marker=-23.5505,-46.6333"></iframe>
+      <iframe class="mapa" title="Mapa do Café Byte" src="https://www.openstreetmap.org/export/embed.html?bbox=-46.640,-23.556,-46.626,-23.545&layer=mapnik&marker=-23.5505,-46.6333"></iframe>
     </section>
   </main>
 
   <footer class="rodape">
-    <p>&copy; <span id="ano">2026</span> Café Byte - Feito por SEU NOME no curso web do Zero</p>
+    <p>&copy; <span id="ano">2026</span> Café Byte - Feito por Isadora Cazabona Vieira no curso web do Zero</p>
     <a href="#inicio">Voltar ao topo &uarr;</a>
   </footer>
   <script src="js/script.js"></script>

@@ -4,7 +4,7 @@
 console.log("O script do Café Byte foi carregado!");
 
 const agora = new Date();
-const hora = getHours();
+const hora = agora.getHours();
 const diaDaSemana = agora.getDay();
 
 console.log('Agora são ' + hora + ' horas. Dia da semana: ' + diaDaSemana);
@@ -54,7 +54,7 @@ function alternarIconeTema() {
 
 botaoTema.addEventListener('click', function () {
     document.body.classList.toggle('escuro');
-    atualizarIconeTema();
+    alternarIconeTema();
     localStorage.setItem('cafebyte-tema', document.body.classList.contains('escuro'));
 });
 
@@ -74,9 +74,9 @@ menu.addEventListener('click', function () {
 // ----- Cardápio: os dados -----
 const produtos = [
     { id: 1, nome: 'Café expresso', categoria: 'bebida', preco: 6.5,
-         emoji '', descricao: 'Curto, encorpado e cheiroso.' },
+         emoji: '', descricao: 'Curto, encorpado e cheiroso.' },
     { id: 2, nome: 'Cappuccino', categoria:'bebida', preco: 9.9,
-         emoj: '', descricao: 'Café, leite vaporizado e canela.'},
+         emoji: '', descricao: 'Café, leite vaporizado e canela.'},
     { id: 3, nome: 'Chocolate quente', categoria: 'bebida', preco: 11,
          emoji: '', descricao: 'Cremoso, perfeito para dias frios.'},
     { id: 4, nome: 'Suco de laraja', categoria: 'bebida', preco: 8,
@@ -104,24 +104,23 @@ function formatarPreco(valor){
 }
 
 function mostrarProdutos() {
-    const texto =  busca.value.tolowerCase();
-    let encontros = 0;
+    const texto =  busca.value.toLowerCase();
+    let encontrados = 0;
     listaProdutos.innerHTML = '';
 
     produtos.forEach(function(produto){
         const daCategoria = categoriaAtual === 'todos' || produto.categoria === categoriaAtual;
-        const combinaBusca = produto.nome.tolowerCase().includes(texto);
+        const combinaBusca = produto.nome.toLowerCase().includes(texto);
 
         if (daCategoria && combinaBusca){
             const card = document.createElement('article');
             card.className = 'card';
-            card.innerHTML = 
-                <span class="emoji">${produto.emoji)</span>
-                <h3>${produto.nome)</h3>
+            card.innerHTML =
+                `<span class="emoji">${produto.emoji}</span>
+                <h3>${produto.nome}</h3>
                 <p>${produto.descricao}</p>
                 <p class="preco">${formatarPreco(produto.preco)}</p>
-                <button class="botao" data-id="${produto.id}">Adicionar</button>
-                ;
+                <button class="botao" data-id="${produto.id}">Adicionar</button>`;
             listaProdutos.appendChild(card);
             encontrados = encontrados + 1;
         }
@@ -169,14 +168,13 @@ function mostrarPedido(){
     }
 
     pedido.forEach(function(item, posicao){
-        const subtotal = item.preco + item.quatidade;
+        const subtotal = item.preco * item.quantidade;
         total = total + subtotal;
         const li = document.createElement('li');
-        li.innerHTML = 
-            <span>${item.quatidade}x ${item.nome}</span>
+        li.innerHTML =
+            `<span>${item.quantidade}x ${item.nome}</span>
             <span>${formatarPreco(subtotal)}</span>
-            <button class="remover" data-posicao"${posicao}" aria-label="Tirar um">-</button>
-            ;
+            <button class="remover" data-posicao="${posicao}" aria-label="Tirar um">-</button>`;
             itensPedido.appendChild(li);
     });
 
@@ -193,10 +191,10 @@ function adicionarAoPedido(id){
         return item.id === id;
     });
 
-    if (itemExitente){
-        itemExitente.quatidade = itemExistente.quatidade + 1;
+    if (itemExistente){
+        itemExistente.quantidade = itemExistente.quantidade + 1;
     }else {
-        pedidopush({id: produto.id, nome: produto.nome, preco: produto.preco, quantidade: 1 });
+        pedido.push({id: produto.id, nome: produto.nome, preco: produto.preco, quantidade: 1 });
     }
 
     salvarPedido();
@@ -237,9 +235,9 @@ formEntrega.addEventListener('submit', function (evento){
         return;
     }
 
-    const endereco = document.querySelector('#endereco'.value);
+    const endereco = document.querySelector('#endereco').value;
     const numero = document.querySelector('#numero').value;
-    msgPedido.textContent = Pedido recebido! Total: ${totalPedido.textContent}. Vamos entregar em ${endereco}, n° ${numero}.;
+    msgPedido.textContent = `Pedido recebido! Total: ${totalPedido.textContent}. Vamos entregar em ${endereco}, n° ${numero}.`;
 
     pedido = [];
     salvarPedido();
@@ -250,32 +248,32 @@ formEntrega.addEventListener('submit', function (evento){
 //Lembra o tema escolhido na última visita 
 if (localStorage.getItem('cafebyte-tema') === 'true') {
     document.body.classList.add('escuro');
-    atualizarIconeTema();
+    alternarIconeTema();
 }
 
 // ----- API 1: clima agora (Open-Meteo) -----
 // Coordenadas de São Paulo. Trocadas pelas de Uberlândia!
 const LATITUDE = -18.9186;
-const LOGITUDE = -48.2772;
+const LONGITUDE = -48.2772;
 const caixaClima = document.querySelector('#clima');
 
 async function carregarClima() {
-    const url = 'https://open-meteo.com{LATITUDE}&longitude=${LONGITUDE}&current=temperature_2m';
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current=temperature_2m`;
 
     try {
         const resposta = await fetch(url);
-        const dados = await. json();
+        const dados = await resposta.json();
         const temperatura = Math.round(dados.current.temperature_2m);
         
-        let sugetao = '';
+        let sugestao = '';
         if (temperatura < 20){
             sugestao = 'Friozinho! Que tal um chocolate quente?';
         }else if (temperatura < 27){
             sugestao = 'Clima perfeito para um cappuccino.';
         }else{
-            sugestão = 'Calorão! Um suco de laranja geladinho cai bem.';
+            sugestao = 'Calorão! Um suco de laranja geladinho cai bem.';
         }
-        caixaClima.textContent = 'Agora faz ${temperatura}°C por aqui. ${sugestao}';
+        caixaClima.textContent = `Agora faz ${temperatura}°C por aqui. ${sugestao}`;
     }catch (erro) {
         caixaClima.textContent = 'Não foi possivel consultar o clima agora.';
         console.log(erro);
@@ -290,17 +288,17 @@ const campoEndereco = document.querySelector('#endereco');
 const msgCep = document.querySelector('#msg-cep');
 
 async function buscarCep() {
-    const ceo = campoCep.value.replace('-','').trim();
+    const cep = campoCep.value.replace('-','').trim();
 
     if (cep.length !== 8) {
-        msgCep.textContent = 'Procurado o endereço...';
+        msgCep.textContent = 'Digite um CEP com 8 números.';
         return;
     }
 
     msgCep.textContent = ' Procurando o endereço...';
 
     try {
-        const resposta = await fetch ('https://viacep.com.br/ws/${cep}/json/');
+        const resposta = await fetch (`https://viacep.com.br/ws/${cep}/json/`);
         const dados = await resposta.json();
 
         if(dados.erro) {
@@ -308,7 +306,7 @@ async function buscarCep() {
             return;
         }
 
-        campoEndereco.value = ${dados.logradouro}, ${dados.bairro}, ${dados.localidade} - ${dados.uf};
+        campoEndereco.value = `${dados.logradouro}, ${dados.bairro}, ${dados.localidade} - ${dados.uf}`;
         msgCep.textContent = ' Endereço encontrado! Agora digite o número.';
         document.querySelector('#numero').focus();
     }catch (erro) {

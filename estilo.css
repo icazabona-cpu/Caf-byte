@@ -11,7 +11,7 @@
     --cor-titulo: #4b2e1f;
     --cor-cafe: #4b2e1f;
     --cor-destaque: #d9822b;
-    --cor-suave: #fle3d3;
+    --cor-suave: #f1e3d3;
 }
 
 /* Todos os elementos: medidas mais previsíveis */
@@ -97,13 +97,13 @@ img {
 }
 
 /* Tabela de Horarios */ 
-.horaros {
+.horarios {
     width: 100%;
     border-collapse: collapse;
 }
 
-.horaros th,
-.horaros td {
+.horarios th,
+.horarios td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid var(--cor-suave);
@@ -144,7 +144,7 @@ img {
     align-items: center;
     text-align: center;
     padding: 48px 24px;
-    background: linear-gradient 135deg, var(--cor-suave), var(--cor-fundo));
+    background: linear-gradient(135deg, var(--cor-suave), var(--cor-fundo));
 }
 
 .destaque h1 {
@@ -169,7 +169,7 @@ img {
 }
 
 .card{
-    backgraund-color: var(--cor-fundo);
+    background-color: var(--cor-fundo);
     border: 1px solid var(--cor-suave);
     border-radius: 16px;
     padding: 20px;
@@ -186,12 +186,12 @@ img {
 }
 
 .emoji {
-    front-size: 3rem;
+    font-size: 3rem;
 }
 
 .preco {
-    front-size: 1.2rem;
-    front-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: var(--cor-destaque);
 }
 
@@ -243,9 +243,9 @@ img {
 
 /* No modo escuro, só trocamos os valores das variáveis */
 body.escuro {
-    --cor-fundo: #1c1512;
+    --cor-fundo: #d8d5d3;
     --cor-texto: #f3e9e2;
-    --cor-cartao: #2a201b;
+    --cor-cartao: #bb5929;
     --cor-titulo: #f2b56b;
     --cor-suave: #3b2f27;
 }
@@ -292,7 +292,7 @@ body {
     }
 }
  
-//* ==== Busca e filtros do cardápio ==== */ 
+/* ==== Busca e filtros do cardápio ==== */ 
 .filtros {
     display: flex;
     flex-wrap: wrap;
@@ -311,7 +311,7 @@ body {
     font-size: 1rem;
 }
 
-.filtros {
+.filtro {
     padding: 8px 16px;
     border: 2px solid var(--cor-destaque);
     border-radius: 999px;
@@ -327,7 +327,7 @@ body {
 }
 
 /* ==== Meu pedido ==== */
-.tens-pedido {
+.itens-pedido {
     list-style: none;
     padding: 0;
 }
@@ -422,8 +422,8 @@ section {
 
 /* Contorno bem visível para quem navega pelo teclado (tab) */
 a:focus-visible,
-button:focus-visible
-input: focus-visible {
+button:focus-visible,
+input:focus-visible {
     outline: 3px solid var(--cor-destaque);
     outline-offset: 2px;
 }
